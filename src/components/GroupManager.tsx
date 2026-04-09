@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Plus, Trash2, Edit2, X, Check } from "lucide-react";
+import { Plus, Trash2, X, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Badge } from "@/components/ui/badge";
 import type { Group, Tag } from "@/lib/supabase-helpers";
 
 const COLORS = ["#06b6d4", "#8b5cf6", "#f59e0b", "#ef4444", "#22c55e", "#ec4899", "#3b82f6", "#f97316"];
@@ -162,6 +162,3 @@ export function GroupManager({
     </div>
   );
 }
-
-// Need Badge import
-import { Badge } from "@/components/ui/badge";
