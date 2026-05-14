@@ -146,6 +146,350 @@ export type Database = {
         }
         Relationships: []
       }
+      ov_community_likes: {
+        Row: {
+          created_at: string
+          id: string
+          reply_id: string | null
+          thread_id: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          reply_id?: string | null
+          thread_id?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          reply_id?: string | null
+          thread_id?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ov_community_likes_reply_id_fkey"
+            columns: ["reply_id"]
+            isOneToOne: false
+            referencedRelation: "ov_community_replies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ov_community_likes_thread_id_fkey"
+            columns: ["thread_id"]
+            isOneToOne: false
+            referencedRelation: "ov_community_threads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ov_community_replies: {
+        Row: {
+          author_id: string
+          body: string
+          created_at: string
+          id: string
+          like_count: number
+          thread_id: string
+        }
+        Insert: {
+          author_id: string
+          body: string
+          created_at?: string
+          id?: string
+          like_count?: number
+          thread_id: string
+        }
+        Update: {
+          author_id?: string
+          body?: string
+          created_at?: string
+          id?: string
+          like_count?: number
+          thread_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ov_community_replies_thread_id_fkey"
+            columns: ["thread_id"]
+            isOneToOne: false
+            referencedRelation: "ov_community_threads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ov_community_threads: {
+        Row: {
+          author_id: string
+          body: string
+          color_hex: string
+          color_tag: string
+          created_at: string
+          id: string
+          is_team_post: boolean
+          like_count: number
+          pinned: boolean
+          product_tags: string[]
+          reply_count: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_id: string
+          body: string
+          color_hex?: string
+          color_tag?: string
+          created_at?: string
+          id?: string
+          is_team_post?: boolean
+          like_count?: number
+          pinned?: boolean
+          product_tags?: string[]
+          reply_count?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_id?: string
+          body?: string
+          color_hex?: string
+          color_tag?: string
+          created_at?: string
+          id?: string
+          is_team_post?: boolean
+          like_count?: number
+          pinned?: boolean
+          product_tags?: string[]
+          reply_count?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ov_email_signups: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      ov_orders: {
+        Row: {
+          billing_interval: string
+          created_at: string
+          discount_pct: number
+          id: string
+          notes: string | null
+          product_ids: string[]
+          status: string
+          stripe_subscription_id: string | null
+          subtotal: number
+          total: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          billing_interval?: string
+          created_at?: string
+          discount_pct?: number
+          id?: string
+          notes?: string | null
+          product_ids?: string[]
+          status?: string
+          stripe_subscription_id?: string | null
+          subtotal?: number
+          total?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          billing_interval?: string
+          created_at?: string
+          discount_pct?: number
+          id?: string
+          notes?: string | null
+          product_ids?: string[]
+          status?: string
+          stripe_subscription_id?: string | null
+          subtotal?: number
+          total?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      ov_products: {
+        Row: {
+          active: boolean
+          benefit_bullets: Json
+          bio_availability_text: string | null
+          category: string
+          color_tag: Json
+          created_at: string
+          daily_ritual_text: string | null
+          description: string
+          directions_text: string | null
+          display_order: number
+          dosage_text: string | null
+          hero_ingredient: string | null
+          id: string
+          image_url: string | null
+          name: string
+          price: number
+          schedule_slot: string
+          short_description: string | null
+          slug: string
+          sourcing_text: string | null
+          tagline: string
+        }
+        Insert: {
+          active?: boolean
+          benefit_bullets?: Json
+          bio_availability_text?: string | null
+          category?: string
+          color_tag?: Json
+          created_at?: string
+          daily_ritual_text?: string | null
+          description?: string
+          directions_text?: string | null
+          display_order?: number
+          dosage_text?: string | null
+          hero_ingredient?: string | null
+          id?: string
+          image_url?: string | null
+          name: string
+          price?: number
+          schedule_slot?: string
+          short_description?: string | null
+          slug: string
+          sourcing_text?: string | null
+          tagline?: string
+        }
+        Update: {
+          active?: boolean
+          benefit_bullets?: Json
+          bio_availability_text?: string | null
+          category?: string
+          color_tag?: Json
+          created_at?: string
+          daily_ritual_text?: string | null
+          description?: string
+          directions_text?: string | null
+          display_order?: number
+          dosage_text?: string | null
+          hero_ingredient?: string | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          price?: number
+          schedule_slot?: string
+          short_description?: string | null
+          slug?: string
+          sourcing_text?: string | null
+          tagline?: string
+        }
+        Relationships: []
+      }
+      ov_profiles: {
+        Row: {
+          avatar_color: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          onboarding_completed: boolean
+          ritual_summary: string | null
+          updated_at: string
+        }
+        Insert: {
+          avatar_color?: string | null
+          created_at?: string
+          full_name?: string | null
+          id: string
+          onboarding_completed?: boolean
+          ritual_summary?: string | null
+          updated_at?: string
+        }
+        Update: {
+          avatar_color?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          onboarding_completed?: boolean
+          ritual_summary?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ov_ritual_logs: {
+        Row: {
+          feeling_score: number
+          id: string
+          logged_at: string
+          notes: string | null
+          product_id: string
+          user_id: string
+        }
+        Insert: {
+          feeling_score?: number
+          id?: string
+          logged_at?: string
+          notes?: string | null
+          product_id: string
+          user_id: string
+        }
+        Update: {
+          feeling_score?: number
+          id?: string
+          logged_at?: string
+          notes?: string | null
+          product_id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      ov_user_rituals: {
+        Row: {
+          added_at: string
+          display_order: number
+          id: string
+          is_paused: boolean
+          product_id: string
+          schedule_slot: string | null
+          user_id: string
+        }
+        Insert: {
+          added_at?: string
+          display_order?: number
+          id?: string
+          is_paused?: boolean
+          product_id: string
+          schedule_slot?: string | null
+          user_id: string
+        }
+        Update: {
+          added_at?: string
+          display_order?: number
+          id?: string
+          is_paused?: boolean
+          product_id?: string
+          schedule_slot?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       tags: {
         Row: {
           created_at: string
